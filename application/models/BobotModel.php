@@ -20,5 +20,10 @@ class BobotModel extends CI_Model {
         $this->db->where('bobot', $bobot)->update('tbl_bobot', $data);
         return ['status' => 201, 'message' => 'Data has been updated'];
     }
+
+    public function delete($bobot) {
+        $this->db->where('bobot', $bobot)->delete('tbl_bobot');
+        return ['status' => 201, 'message' => 'Data has been deleted'];
+    }
     
 }
