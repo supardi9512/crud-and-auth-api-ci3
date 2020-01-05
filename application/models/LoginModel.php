@@ -39,5 +39,18 @@ class LoginModel extends CI_Model {
         }
     }
     
+    public function logout() {
+        // untuk mengambil header (client service dan auth key) saat ada sesuatu request ke fungsi ini
+        $users_id = $this->input->get_request_header('User-ID', TRUE);
+        $token = $this->input->get_request_header('Authorization', TRUE);
+        if($users_id == "") {
+            return ['status' => 204, 'message' => 'Headers ID is NULL'];
+        } elseif($token == "") {
+            return ['status' => 204, 'message' => 'Headers Auth is NULL'];
+        } else {
+            $this->db->where('users_id', $users_id)->where('token', $token)->delete('tbl_users_authentication');
+            return ['status' => 200, 'message' => 'Successfully logout'];
+        }
+    }
     
 }
