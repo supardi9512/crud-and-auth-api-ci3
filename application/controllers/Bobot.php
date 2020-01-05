@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Bobot extends CI_Controller {
 
 	public function index() {
-
+        $this->load->view('hidden');
     }
     
     public function view() {
