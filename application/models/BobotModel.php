@@ -15,5 +15,10 @@ class BobotModel extends CI_Model {
         $this->db->insert('tbl_bobot', $data);
         return ['status' => 201, 'message' => 'Data has been created'];
     }
+
+    public function update($bobot, $data) {
+        $this->db->where('bobot', $bobot)->update('tbl_bobot', $data);
+        return ['status' => 201, 'message' => 'Data has been updated'];
+    }
     
 }
