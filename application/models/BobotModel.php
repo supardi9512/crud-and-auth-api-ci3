@@ -10,5 +10,10 @@ class BobotModel extends CI_Model {
     public function detail($bobot) {
         return $this->db->select('bobot, nilai')->from('tbl_bobot')->where('bobot', $bobot)->order_by('bobot', 'DESC')->get()->result();
     }
+
+    public function create($data) {
+        $this->db->insert('tbl_bobot', $data);
+        return ['status' => 201, 'message' => 'Data has been created'];
+    }
     
 }
